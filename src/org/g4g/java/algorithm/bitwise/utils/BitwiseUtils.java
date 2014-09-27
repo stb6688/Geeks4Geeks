@@ -4,9 +4,26 @@ import java.util.Random;
 
 public class BitwiseUtils {
 
-//	public static int getNumOnes(int i) {
-//		
-//	}
+	/**
+	 * Given any integer, return number of 1 bits.
+	 * @param i
+	 * @return
+	 */
+	public static int getOnes(int i) {
+		int count = 0;
+		
+		if (i < 0) {
+			i &= Integer.MAX_VALUE;
+			count = 1;
+		}
+		
+		while (i != 0) {
+			i = (i & (i - 1));
+			count++;
+		}
+		
+		return count;
+	}
 	
 	/**
 	 * Given any integer, return the binary representation as string.
@@ -44,6 +61,7 @@ public class BitwiseUtils {
 		int i = random.nextInt();
 		System.out.println(i);
 		System.out.println(toBinary(i, true));
+		System.out.println(getOnes(i));
 	}
 	
 }
