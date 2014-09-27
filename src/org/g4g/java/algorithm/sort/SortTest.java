@@ -5,7 +5,7 @@ import java.util.Arrays;
 import org.g4g.java.common.utils.CommonUtils;
 
 public class SortTest {
-	private int size = 100;
+	private int size = 13;
 	private boolean unique = true;
 	// if true, print inputs, result, and time;
 	// if false, only print error when the result is wrong.
