@@ -51,8 +51,10 @@ public class SortTest {
 
 	/// Methods ///
 	
-	public void test(ISort sort) {
+	public boolean test(ISort sort) {
+		boolean success = true;
 		int[] array = CommonUtils.generateArray(size, unique);
+		int[] copy  = Arrays.copyOf(array, array.length);
 		if (isKerbose())
 			System.out.println("Input : " + Arrays.toString(array));
 		
@@ -60,14 +62,12 @@ public class SortTest {
 		sort.sort(array);
 		long t2 = System.currentTimeMillis();
 		
-		if (array.length > 0) {
-			int prev = array[0], curr;
-			for (int i = 1; i < array.length; i++) {
-				curr = array[i];
-				if (curr < prev) {
-					System.err.println("Sorting result is wrong!");
-					break;
-				}
+		Arrays.sort(copy);
+		for (int i = 0; i < array.length; i++) {
+			if (array[i] != copy[i]) {
+				System.err.println("Sorting result is wrong!!");
+				success = false;
+				break;
 			}
 		}
 		
@@ -75,6 +75,29 @@ public class SortTest {
 			System.out.println("Sorted: " + Arrays.toString(array));
 			System.out.println(String.format("Total time=%,dms", (t2 - t1)));
 		}
+		
+		return success;
+	}
+	
+	public boolean test(ISort sort, int n) {
+		boolean success = true;
+		for (int i = 0; i < n; i++) {
+			int[] array = CommonUtils.generateArray(size, unique);
+			int[] copy  = Arrays.copyOf(array, array.length);
+			sort.sort(array);
+			Arrays.sort(copy);
+			for (int j = 0; j < array.length; j++) {
+				if (array[j] != copy[j]) {
+					System.err.println("Sorting result is wrong!!");
+					success = false;
+					break;
+				}
+			}
+		}
+		
+		if (success)
+			System.out.println("Success!");
+		return success;
 	}
 	
 
