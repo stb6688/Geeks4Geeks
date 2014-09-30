@@ -1,5 +1,6 @@
 package org.g4g.java.common.utils;
 
+import java.util.Arrays;
 import java.util.Random;
 
 public class CommonUtils {
@@ -57,9 +58,10 @@ public class CommonUtils {
 	 * duplicated elements; otherwise there is no guarantee.
 	 * @param size
 	 * @param unique
+	 * @param allowNegative
 	 * @return
 	 */
-	public static int[] generateArray(int size, boolean unique) {
+	public static int[] generateArray(int size, boolean unique, boolean allowNegative) {
 		Random random = new Random();
 		if (size < 0)
 			throw new IllegalArgumentException("array size can't be negative.");
@@ -73,6 +75,11 @@ public class CommonUtils {
 		}
 		for (int i = 0; i < size; i++)
 			swap(array, i, random.nextInt(size));
+		if (allowNegative) {
+			int shift = size/2;
+			for (int i = 0; i < size; i++)
+				array[i] -= shift;
+		}
 		
 		return array;
 	}
@@ -80,8 +87,9 @@ public class CommonUtils {
 	
 	public static void main(String[] args) {
 		
-		System.out.println(urlToClass("http://geeksquiz.com/binary-search/"));
+//		System.out.println(urlToClass("http://geeksquiz.com/binary-search/"));
 		
+		System.out.println(Arrays.toString(CommonUtils.generateArray(20, true, true)));
 	}
 	
 }

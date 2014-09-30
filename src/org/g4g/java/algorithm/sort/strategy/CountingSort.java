@@ -5,6 +5,15 @@ import java.util.Arrays;
 import org.g4g.java.algorithm.sort.ISort;
 import org.g4g.java.algorithm.sort.SortTest;
 
+/**
+ * Assume the given integers are distributed on a relatively small interval.
+ * Build an array "counts" with equal length and all initialized to 0.
+ * On this "counts" array, at each index, value = number of integers in input array
+ * with value-min = index.
+ * 
+ * @author AlexTheGreat
+ * @date Sep 29, 2014
+ */
 public class CountingSort implements ISort {
 
 	@Override

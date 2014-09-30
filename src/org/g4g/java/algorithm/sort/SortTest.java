@@ -7,6 +7,7 @@ import org.g4g.java.common.utils.CommonUtils;
 public class SortTest {
 	private int size = 13;
 	private boolean unique = true;
+	private boolean allowNegative = true;
 	// if true, print inputs, result, and time;
 	// if false, only print error when the result is wrong.
 	private boolean kerbose = true;
@@ -15,10 +16,11 @@ public class SortTest {
 	
 	public SortTest() {}
 	
-	public SortTest(int size, boolean unique, boolean kerbose) {
+	public SortTest(int size, boolean unique, boolean kerbose, boolean allowNegative) {
 		this.size = size;
 		this.unique = unique;
 		this.kerbose = kerbose;
+		this.allowNegative = allowNegative;
 	}
 	
 
@@ -48,12 +50,20 @@ public class SortTest {
 		this.kerbose = kerbose;
 	}
 	
+	public boolean isAllowNegative() {
+		return allowNegative;
+	}
+
+	public void setAllowNegative(boolean allowNegative) {
+		this.allowNegative = allowNegative;
+	}
+	
 
 	/// Methods ///
 	
 	public boolean test(ISort sort) {
 		boolean success = true;
-		int[] array = CommonUtils.generateArray(size, unique);
+		int[] array = CommonUtils.generateArray(size, unique, allowNegative);
 		int[] copy  = Arrays.copyOf(array, array.length);
 		if (isKerbose())
 			System.out.println("Input : " + Arrays.toString(array));
@@ -82,7 +92,7 @@ public class SortTest {
 	public boolean test(ISort sort, int n) {
 		boolean success = true;
 		for (int i = 0; i < n; i++) {
-			int[] array = CommonUtils.generateArray(size, unique);
+			int[] array = CommonUtils.generateArray(size, unique, allowNegative);
 			int[] copy  = Arrays.copyOf(array, array.length);
 			sort.sort(array);
 			Arrays.sort(copy);

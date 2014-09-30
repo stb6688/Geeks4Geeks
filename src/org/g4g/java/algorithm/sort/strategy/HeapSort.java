@@ -49,7 +49,13 @@ public class HeapSort implements ISort {
 				currIndex = parentIndex;
 				parentIndex = (currIndex - 1)/2;
 			}
-			bubbleDown(currIndex);
+			
+			// NOTE: bubbleDown() is not needed; if a child is less than
+			// parent, then it will be bubble up to become the new parent,
+			// and it is guaranteed to be less than the other child.
+			// L < Root, root < R --> L becomes new root
+			// L < Root, Root < R --> L (new root) < R.
+			// bubbleDown(currIndex);
 		}
 		
 		void bubbleDown(int index) {
@@ -85,9 +91,8 @@ public class HeapSort implements ISort {
 	
 	
 	public static void main(String[] args) {
-		SortTest test = new SortTest(13, false, true);
-		ISort sort = new HeapSort();
-		test.test(sort);
+		SortTest test = new SortTest(13, false, true, true);
+		test.test(new HeapSort(), 100);
 	}
 	
 }
