@@ -1,7 +1,7 @@
 package org.g4g.java.algorithm.bitwise;
 
-import java.util.HashMap;
-import java.util.Map;
+//import java.util.HashMap;
+//import java.util.Map;
 
 /**
  * Question: 

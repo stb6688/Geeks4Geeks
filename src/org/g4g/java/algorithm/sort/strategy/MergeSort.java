@@ -1,10 +1,7 @@
 package org.g4g.java.algorithm.sort.strategy;
 
-import java.util.Arrays;
-
 import org.g4g.java.algorithm.sort.ISort;
 import org.g4g.java.algorithm.sort.SortTest;
-import org.g4g.java.common.utils.CommonUtils;
 
 /**
  * Divide array into 2 sub-arrays, by mid point, then merge them.
