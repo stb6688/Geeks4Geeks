@@ -87,9 +87,9 @@ public class CommonUtils {
 	
 	public static void main(String[] args) {
 		
-//		System.out.println(urlToClass("http://geeksquiz.com/binary-search/"));
+		System.out.println(urlToClass("http://www.geeksforgeeks.org/greedy-algorithms-set-1-activity-selection-problem/"));
 		
-		System.out.println(Arrays.toString(CommonUtils.generateArray(20, true, true)));
+//		System.out.println(Arrays.toString(CommonUtils.generateArray(20, true, true)));
 	}
 	
 }
